@@ -1,4 +1,4 @@
-export default function SearchBar({searchTerm, setSearchTerm}: {searchTerm: string, setSearchTerm: (value: string) => void}){
+export default function SearchBar({searchTerm, setSearchTerm, onSearch}: {searchTerm: string, setSearchTerm: (value: string) => void, onSearch: (query: string) => void}){
     
     return(
         <div className="search-bar flex items-center justify-center gap-2 bg-zinc-100 dark:bg-zinc-900 p-4 rounded-md shadow-md mt-4">
@@ -8,9 +8,13 @@ export default function SearchBar({searchTerm, setSearchTerm}: {searchTerm: stri
             placeholder="Search for a recipe..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            onSubmit={(e) => {
+                e.preventDefault();
+                onSearch(searchTerm);
+            }}
             />
 
-            <button className="cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button onClick={() => onSearch(searchTerm)} className="cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 Search
             </button>
 
