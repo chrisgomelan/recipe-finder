@@ -1,9 +1,4 @@
-"use client";
-import {useState} from "react";
-
-
-export default function SearchBar(){
-    const [searchTerm, setSearchTerm] = useState("");
+export default function SearchBar({searchTerm, setSearchTerm}: {searchTerm: string, setSearchTerm: (value: string) => void}){
     
     return(
         <div className="search-bar flex items-center justify-center gap-2 bg-zinc-100 dark:bg-zinc-900 p-4 rounded-md shadow-md mt-4">
@@ -18,6 +13,8 @@ export default function SearchBar(){
             <button className="cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 Search
             </button>
+
+            
         </div>
     )
 }
